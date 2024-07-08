@@ -1,40 +1,30 @@
-#include "holberton.h"
-#include <stdio.h>
+#include "main.h"
 
 /**
- * *_strpbrk - searches a string for any of a set of bytes.
- *
- * @s: string.
- * @accept: bytes.
- * Return: pointer to the byte in s.
- */
+* _strpbrk - search a string for any of a set of bytes
+* @s: source string
+* @accept: accepted characters
+*
+* Return: the string since the first found accepted character
+*/
 char *_strpbrk(char *s, char *accept)
 {
-	if (s == NULL || accept == NULL)
-	{
-		return (NULL);
-	}
+int a = 0, b;
 
-	while (*s)
-	{
-		if (_strchr(accept, *s))
-			return (s);
-		s++;
-	}
-	return (NULL);
-}
-/**
- * *_strchr - locates a character in a string.
- *
- * @s: string.
- * @c: character to be located.
- * Return: pointer to first occurrence of NULL if no character found.
- */
-char *_strchr(char *s, char c)
+while (s[a])
 {
-	do {
-		if (*s == c)
-			return (s);
-	} while (*s++);
-	return (NULL);
+b = 0;
+
+while (accept[b])
+{
+if (s[a] == accept[b])
+{
+s += a;
+return (s);
+}
+b++;
+}
+a++;
+}
+return ('\0');
 }
